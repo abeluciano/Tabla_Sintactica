@@ -61,11 +61,12 @@ input = [
     },
 ]
 
-while len(stack) > 0:
+while len(stack) > 0: 
   for item in stack:
     print(f"Symbol: {item.symbol}, Lexeme: {item.lexeme}, ID: {item.id}")
 
   if stack[-1].symbol == '$' and input[0]["symbol"] == '$':
+    print("\nLa gramatica es correcta")
     break
 
   production = tabla.at[stack[-1].symbol, input[0]["symbol"]]
@@ -81,9 +82,11 @@ while len(stack) > 0:
         continue
       new_node = NodeStack(term, None)
       stack.append(new_node)
+  elif production == ' ':
+    print("La gramatica es incorrecta")
   else:
     # Producción vacía, desapila
-    stack.pop()
+    node_h = stack.pop()
     continue
 
 # crear los hijo X y T de E
