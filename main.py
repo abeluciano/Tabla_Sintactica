@@ -60,35 +60,42 @@ input = [
         "col": 0
     },
 ]
-
-while len(stack) > 0: 
-  for item in stack:
-    print(f"Symbol: {item.symbol}, Lexeme: {item.lexeme}, ID: {item.id}")
-
-  if stack[-1].symbol == '$' and input[0]["symbol"] == '$':
-    print("\nLa gramatica es correcta")
-    break
-
-  production = tabla.at[stack[-1].symbol, input[0]["symbol"]]
-
-  if production != 'e':
-    production_terms = production.split()
-    node_p = stack.pop()
-    for term in reversed(production_terms):
-      if term == input[0]["symbol"]:
-        #nodo hoja
-        node_h = term
-        input.pop(0)
-        continue
-      new_node = NodeStack(term, None)
-      stack.append(new_node)
-  elif production == ' ':
-    print("La gramatica es incorrecta")
-  else:
-    # Producción vacía, desapila
-    node_h = stack.pop()
-    continue
-
+    
+if (
+    stack[-1].symbol not in tabla.index or
+    input[0]["symbol"] not in tabla.columns
+):
+  print("\nLa gramatica es incorrecta")
+else: 
+  print("\nLa gramatica es correcta\n")
+  while len(stack) > 0: 
+    
+    for item in stack:
+      print(f"Symbol: {item.symbol}, Lexeme: {item.lexeme}, ID: {item.id}")
+  
+    if stack[-1].symbol == '$' and input[0]["symbol"] == '$':
+      break
+  
+    production = tabla.at[stack[-1].symbol, input[0]["symbol"]]
+  
+    if production != 'e':
+      production_terms = production.split()
+      node_p = stack.pop()
+      for term in reversed(production_terms):
+        if term == input[0]["symbol"]:
+          #nodo hoja
+          node_h = term
+          input.pop(0)
+          continue
+        new_node = NodeStack(term, None)
+        stack.append(new_node)
+    elif production == ' ':
+      print("La gramatica es incorrecta")
+  
+    else:
+      # Producción vacía, desapila
+      node_h = stack.pop()
+      continue
 # crear los hijo X y T de E
 #node_X_tree = NodeTree(node_X.id, node_X.symbol, node_X.lexeme)
 #node_T_tree = NodeTree(node_T.id, node_T.symbol, node_T.lexeme)
