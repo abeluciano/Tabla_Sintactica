@@ -37,21 +37,21 @@ root = NodeTree(symbol_E.id, symbol_E.symbol, symbol_E.lexeme)
 input = [
     {
         "symbol": "int",
-        "lexeme": "4",
-        "nroline": 2,
-        "col": 2
+        "lexeme": "$",
+        "nroline": 0,
+        "col": 0
     },
     {
-        "symbol": "*",
-        "lexeme": "*",
-        "nroline": 2,
-        "col": 4
+        "symbol": "+",
+        "lexeme": "$",
+        "nroline": 0,
+        "col": 0
     },
     {
         "symbol": "int",
-        "lexeme": "5",
-        "nroline": 2,
-        "col": 6
+        "lexeme": "$",
+        "nroline": 0,
+        "col": 0
     },
     {
         "symbol": "$",
@@ -67,16 +67,27 @@ if (
 ):
   print("\nLa gramatica es incorrecta")
 else: 
-  print("\nLa gramatica es correcta\n")
   while len(stack) > 0: 
     
     for item in stack:
       print(f"Symbol: {item.symbol}, Lexeme: {item.lexeme}, ID: {item.id}")
   
     if stack[-1].symbol == '$' and input[0]["symbol"] == '$':
+      print("\nLa gramatica es correcta\n")
       break
-  
+    print(stack[-1].symbol, input[0]["symbol"])
+
+    
+    if stack[-1].symbol == input[0]["symbol"]:
+      node_h = stack[-1].symbol
+      input.pop(0)
+      stack.pop()
+    elif stack[-1].symbol not in tabla.index:
+      print("Error sintactico en linea:", input[0]["nroline"])
+      break
+      
     production = tabla.at[stack[-1].symbol, input[0]["symbol"]]
+
   
     if production != 'e':
       production_terms = production.split()
@@ -89,18 +100,11 @@ else:
           continue
         new_node = NodeStack(term, None)
         stack.append(new_node)
+      
     elif production == ' ':
-      print("La gramatica es incorrecta")
+      print("Error sintactico en linea:", input[0]["nroline"])
   
     else:
       # Producción vacía, desapila
       node_h = stack.pop()
       continue
-# crear los hijo X y T de E
-#node_X_tree = NodeTree(node_X.id, node_X.symbol, node_X.lexeme)
-#node_T_tree = NodeTree(node_T.id, node_T.symbol, node_T.lexeme)
-#node_father = buscar_node(node_p.id)
-#node_father.children.append(node_X_tree)
-#node_father.children.append(node_T_tree)
-#node_X_tree.father = node_father
-#node_T_tree.father = node_father

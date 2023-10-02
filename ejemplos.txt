@@ -1,0 +1,96 @@
+"""
+    {
+        "symbol": "(",
+        "lexeme": "4",
+        "nroline": 2,
+        "col": 2
+    },
+    {
+        "symbol": "int",
+        "lexeme": "*",
+        "nroline": 2,
+        "col": 4
+    },
+    {
+        "symbol": "+",
+        "lexeme": "5",
+        "nroline": 2,
+        "col": 6
+    },
+  
+    {
+        "symbol": "int",
+        "lexeme": "$",
+        "nroline": 0,
+        "col": 0
+    },
+  
+    {
+        "symbol": ")",
+        "lexeme": "$",
+        "nroline": 0,
+        "col": 0
+    },
+  
+    {
+        "symbol": "*",
+        "lexeme": "$",
+        "nroline": 0,
+        "col": 0
+    },
+  
+    {
+        "symbol": "int",
+        "lexeme": "$",
+        "nroline": 0,
+        "col": 0
+    },
+    """
+  """
+    {
+        "symbol": "int",
+        "lexeme": "$",
+        "nroline": 0,
+        "col": 0
+    },
+    {
+        "symbol": "+",
+        "lexeme": "$",
+        "nroline": 0,
+        "col": 0
+    },
+    {
+        "symbol": "int",
+        "lexeme": "$",
+        "nroline": 0,
+        "col": 0
+    },
+    """
+
+    """
+  """
+    {
+        "symbol": "int",
+        "lexeme": "$",
+        "nroline": 0,
+        "col": 0
+    },
+    {
+        "symbol": "+",
+        "lexeme": "$",
+        "nroline": 0,
+        "col": 0
+    },
+    {
+        "symbol": "(",
+        "lexeme": "$",
+        "nroline": 0,
+        "col": 0
+    },
+    {
+        "symbol": "int",
+        "lexeme": "$",
+        "nroline": 0,
+        "col": 0
+    },
+    """
